@@ -18,7 +18,7 @@ class AuthController extends Controller
             'name'     => 'required|string',
             'email'    => 'required|string|email|unique:secUsers',
             'password' => 'required|string|min:8|confirmed',
-            'cellphone'=> 'required|string',
+            'cellPhone'=> 'required|string',
             'companyName'=> 'required|string',
             //'idActivity'=> 'required|string',            
         ]);
@@ -44,15 +44,14 @@ class AuthController extends Controller
         $user = new User([
             'name'     => $request->name,
             'email'    => $request->email,
-            'cellphone'    => $request->cellphone,
+            'cellPhone'    => $request->cellPhone,
             'password' => bcrypt($request->password),        
         ]);
-        $user->contas()->attach($idAccount); 
         $user->save();
         $idUser = $user->id;
-
-        
+        $user->contas()->attach($idAccount); 
+        $admAccounts->usuarios()->attach($idUser);
+                
         return response()->json([
             'message' => 'Successfully created user!!!'], 201);
     }
- }
