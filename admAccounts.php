@@ -12,7 +12,7 @@ class admAccounts extends Model
 
     protected $table = 'admAccounts';
     protected $fillable = [
-        'description', 'email','idPlan', 
+        'description', 'email','idPlan', 'id',
     ];
 
     /**
@@ -27,6 +27,6 @@ class admAccounts extends Model
     ];
     public function usuarios()
     {
-       return $this->belongsToMany(User::class, 'accounts_users','account_id','user_id'); 
+       return $this->belongsToMany(admAccounts::class,'adm_account_user','account_id','user_id'); 
     }
   }
