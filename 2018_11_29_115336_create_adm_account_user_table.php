@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountsUsersTable extends Migration
+class CreateAdmAccountUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAccountsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts_users', function (Blueprint $table) {
+        Schema::create('adm_account_user', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('account_id')->unsigned();
-            $table->primary(['user_id','account_id']);
+            //$table->primary(['user_id','account_id']);
             $table->timestamps();
             
             //Relations
@@ -31,6 +31,6 @@ class CreateAccountsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts_users');
+        Schema::dropIfExists('adm_account_user');
     }
 }
