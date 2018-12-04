@@ -18,8 +18,9 @@ class CreateAccountsUsersTable extends Migration
             $table->integer('account_id')->unsigned();
             $table->primary(['user_id','account_id']);
             $table->timestamps();
+            
             //Relations
-            $table->foreign('user_id')->references('id')->on('SecUsers')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('secUsers')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('admAccounts')->onDelete('cascade');
         });
     }
