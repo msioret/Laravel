@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $table = 'secUsers';
     protected $fillable = [
-        'name', 'email', 'cellphone','password', 
+        'name', 'email', 'cellPhone','password', 'id',
     ];
 
     /**
@@ -32,8 +32,7 @@ class User extends Authenticatable
      ];
     public function contas()
     {
-       return $this->belongsToMany(admAccounts::class, 'accounts_users','user_id' ,'account_id'); 
-       
+       return $this->belongsToMany(admAccounts::class,'adm_account_user','user_id','account_id');       
     }
     /*public function companies()
     {
